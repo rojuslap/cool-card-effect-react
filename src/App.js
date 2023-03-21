@@ -1,37 +1,72 @@
-import Card from "./components/Card";
 import { AiFillHeart } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
-import Littlecard from "./components/Littlecard";
-import { useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import Cardgroup from "./components/Cardgroup";
+import classNames from "classnames";
 
 function App() {
+  const [state1, setState1] = useState(0);
+  const [state2, setState2] = useState(1);
+  const [state3, setState3] = useState(2);
+
+  const handleClickLove1 = () => {
+    setState1((state1 + 1) % 3);
+    setState2((state2 + 1) % 3);
+    setState3((state3 + 1) % 3);
+  };
+  const handleClickHate1 = () => {
+    setState1((state1 + 1) % 3);
+    setState2((state2 + 1) % 3);
+    setState3((state3 + 1) % 3);
+  };
+
+  const box1ClassNames = classNames(
+    { "-translate-x-[70%] translate-y-[10rem] scale-0": state1 === 0 },
+    {
+      "translate-x-[70$] duration-300 scale-1 delay-200 ease-in-out":
+        state1 === 1,
+    },
+    {
+      "translate-x-[70%] translate-y-[10rem] duration-300 ease-in-out scale-0":
+        state1 === 2,
+    }
+  );
+
+  const box2ClassNames = classNames(
+    { "-translate-x-[70%] translate-y-[10rem] scale-0": state2 === 0 },
+    {
+      "translate-x-[70$] duration-300 ease-in-out scale-1 delay-200":
+        state2 === 1,
+    },
+    {
+      "translate-x-[70%] translate-y-[10rem] duration-300 ease-in-out scale-0":
+        state2 === 2,
+    }
+  );
+
+  const box3ClassNames = classNames(
+    { "-translate-x-[70%] translate-y-[10rem] scale-0": state3 === 0 },
+    {
+      "translate-x-[70$] duration-300 ease-in-out scale-1 delay-200":
+        state3 === 1,
+    },
+    {
+      "scale-0 translate-x-[70%] translate-y-[10rem] duration-300 ease-in-out":
+        state3 === 2,
+    }
+  );
   return (
     <div className="bg-black w-full h-screen items-center grid justify-center">
       <div className="text-3xl text-white"></div>
-      <div className="relative w-[30vmin] [&>*:nth-child(1)]:hover:-translate-x-[100%] [&>*:nth-child(1)]:hover:translate-y-[2rem] [&>*:nth-child(1)]:hover:-rotate-[16deg] [&>*:nth-child(2)]:hover:-translate-x-[40%] [&>*:nth-child(2)]:hover:-translate-y-[1.5rem] [&>*:nth-child(2)]:hover:-rotate-12 [&>*:nth-child(3)]:hover:translate-x-[100%] [&>*:nth-child(3)]:hover:translate-y-[2rem] [&>*:nth-child(3)]:hover:rotate-[16deg] [&>*:nth-child(4)]:hover:translate-x-[40%] [&>*:nth-child(4)]:hover:-translate-y-[1.5rem] [&>*:nth-child(4)]:hover:rotate-12 [&>*:nth-child(5)]:hover:-translate-x-[110%] [&>*:nth-child(5)]:hover:translate-y-[20rem] [&>*:nth-child(5)]:hover:-rotate-[12deg] [&>*:nth-child(6)]:hover:-translate-x-[40%] [&>*:nth-child(6)]:hover:-translate-y-[6rem] [&>*:nth-child(6)]:hover:rotate-12 [&>*:nth-child(7)]:hover:translate-x-[100%] [&>*:nth-child(7)]:hover:-translate-y-[4rem] [&>*:nth-child(7)]:hover:-rotate-[16deg] [&>*:nth-child(8)]:hover:translate-x-[130%] [&>*:nth-child(8)]:hover:translate-y-[20rem] [&>*:nth-child(8)]:hover:rotate-[32deg]">
-        <div className="-translate-x-10 -rotate-3 ease-[cubic-bezier(.16,.79,.36,.89)] duration-500 pointer-events-auto z-10">
-          <Card />
+      <div className="mx-auto">
+        <div className={box1ClassNames}>
+          <Cardgroup />
         </div>
-        <div className="ease-[cubic-bezier(.16,.79,.36,.89)] duration-500 pointer-events-auto">
-          <Card />
+        <div className={box2ClassNames}>
+          <Cardgroup />
         </div>
-        <div className="-translate-x-5 -rotate-3 ease-[cubic-bezier(.16,.79,.36,.89)] duration-500 relative z-10">
-          <Card />
-        </div>
-        <div className="translate-x-3 rotate-3 ease-[cubic-bezier(.16,.79,.36,.89)] duration-500 ">
-          <Card />
-        </div>
-        <div className="translate-y-1 ease-[cubic-bezier(.16,.79,.36,.89)] duration-500">
-          <Littlecard />
-        </div>
-        <div className="translate-y-1 ease-[cubic-bezier(.16,.79,.36,.89)] duration-500">
-          <Littlecard />
-        </div>
-        <div className=" translate-y-1 ease-[cubic-bezier(.16,.79,.36,.89)] duration-500">
-          <Littlecard />
-        </div>
-        <div className="translate-y-1 ease-[cubic-bezier(.16,.79,.36,.89)] duration-500">
-          <Littlecard />
+        <div className={box3ClassNames}>
+          <Cardgroup />
         </div>
       </div>
       <div className="text-center flex items-center justify-center mt-[17rem] text-3xl mb-[8rem]">
@@ -41,7 +76,10 @@ function App() {
         </div>
         <div>
           <div className="absolute bg-green-600 mx-8 p-3 w-12 h-12 rounded-full hover:blur duration-300 cursor-pointer"></div>
-          <AiFillHeart className="text-green-600 mx-8 p-3 box-border outline outline-green-600 rounded-full w-12 h-12 relative bg-black pointer-events-none" />
+          <AiFillHeart
+            onClick={handleClickLove1}
+            className="text-green-600 mx-8 p-3 box-border outline outline-green-600 rounded-full w-12 h-12 relative bg-black"
+          />
         </div>
       </div>
     </div>
