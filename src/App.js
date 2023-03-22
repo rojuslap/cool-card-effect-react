@@ -13,11 +13,25 @@ function App() {
     setState1((state1 + 1) % 3);
     setState2((state2 + 1) % 3);
     setState3((state3 + 1) % 3);
+    const button = document.querySelector(".love-button");
+    button.classList.add("scale-75");
+
+    // Remove the class after a brief delay
+    setTimeout(() => {
+      button.classList.remove("scale-75");
+    }, 100);
   };
   const handleClickHate1 = () => {
     setState1((state1 - 1 + 3) % 3);
     setState2((state2 - 1 + 3) % 3);
     setState3((state3 - 1 + 3) % 3);
+    const button = document.querySelector(".hate-button");
+    button.classList.add("scale-75");
+
+    // Remove the class after a brief delay
+    setTimeout(() => {
+      button.classList.remove("scale-75");
+    }, 100);
   };
 
   const box1ClassNames = classNames(
@@ -82,18 +96,18 @@ function App() {
       </div>
       <div className="text-center flex items-center justify-center mt-[17rem] text-3xl mb-[8rem]">
         <div>
-          <div className="absolute bg-neutral-400 mx-8 p-3 w-12 h-12 rounded-full hover:blur duration-300 cursor-pointer"></div>
-          <RxCross1
+          <div
             onClick={handleClickHate1}
-            className="text-neutral-400 mx-8 p-3 box-border outline outline-neutral-400 rounded-full w-12 h-12 relative bg-black"
-          />
+            className="absolute bg-neutral-400 mx-8 p-3 w-12 h-12 rounded-full hover:blur duration-300 cursor-pointer"
+          ></div>
+          <RxCross1 className="text-neutral-400 mx-8 p-3 box-border outline outline-neutral-400 rounded-full w-12 h-12 relative bg-black pointer-events-none hate-button duration-200" />
         </div>
         <div>
-          <div className="absolute bg-green-600 mx-8 p-3 w-12 h-12 rounded-full hover:blur duration-300 cursor-pointer"></div>
-          <AiFillHeart
+          <div
             onClick={handleClickLove1}
-            className="text-green-600 mx-8 p-3 box-border outline outline-green-600 rounded-full w-12 h-12 relative bg-black"
-          />
+            className="absolute bg-green-600 mx-8 p-3 w-12 h-12 rounded-full hover:blur duration-300 cursor-pointer"
+          ></div>
+          <AiFillHeart className="text-green-600 mx-8 p-3 box-border outline outline-green-600 rounded-full w-12 h-12 relative bg-black pointer-events-none love-button duration-200" />
         </div>
       </div>
     </div>
