@@ -92,7 +92,7 @@ function App() {
           <div className={box1ClassNames}>
             <Cardgroup
               className={`aspect-[5/7] bg-blue-400 rounded-3xl [&>*:nth-child(1)]:bg-green-600`}
-              littleClassName="aspect-[5/7] w-[12vmin] bg-neutral-600 rounded-3xl"
+              littleClassName="aspect-[5/7] md:w-[12vmin] bg-neutral-600 rounded-3xl"
               card1="bg-blue-100"
               card2="bg-blue-300"
               card3="bg-blue-400"
@@ -137,7 +137,7 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="text-center flex mt-[70%] text-3xl">
+      <div className="text-center flex md:mt-[70%] text-3xl">
         <div>
           <div
             onClick={handleClickHate1}
