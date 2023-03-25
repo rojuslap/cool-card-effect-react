@@ -1,10 +1,10 @@
 import React from "react";
 
-function Card() {
+function Card(props) {
   return (
     <div className="">
-      <div className="absolute">
-        <div className="aspect-[5/7] w-[30vmin] bg-white rounded-3xl"></div>
+      <div className="absolute  w-[30vmin]">
+        <div className={props.className}></div>
       </div>
     </div>
   );

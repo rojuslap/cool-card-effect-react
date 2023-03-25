@@ -3,6 +3,7 @@ import { RxCross1 } from "react-icons/rx";
 import { useState } from "react";
 import Cardgroup from "./components/Cardgroup";
 import classNames from "classnames";
+import Card from "./components/Card";
 
 function App() {
   const [state1, setState1] = useState(0);
@@ -78,23 +79,65 @@ function App() {
         state3 === 2,
     }
   );
+  const classNames1 = [
+    "aspect-[5/7] bg-red-500 rounded-3xl",
+    "aspect-[5/7] bg-green-500 rounded-3xl",
+    "aspect-[5/7] bg-blue-500 rounded-3xl",
+    "aspect-[5/7] bg-yellow-500 rounded-3xl",
+  ];
   return (
     <div className="bg-black w-full h-screen items-center grid justify-center">
-      <div className="text-3xl text-white"></div>
       <div className="mx-auto max-w-screen-lg">
         <div className="">
           <div className={box1ClassNames}>
-            <Cardgroup />
+            <Cardgroup
+              className={`aspect-[5/7] bg-blue-400 rounded-3xl [&>*:nth-child(1)]:bg-green-600`}
+              littleClassName="aspect-[5/7] w-[12vmin] bg-neutral-600 rounded-3xl"
+              card1="bg-blue-100"
+              card2="bg-blue-300"
+              card3="bg-blue-400"
+              card4="bg-blue-700"
+              littleCard1="bg-blue-100"
+              littleCard2="bg-blue-200"
+              littleCard3="bg-blue-300"
+              littleCard4="bg-blue-700"
+            />
           </div>
         </div>
         <div className={box2ClassNames}>
-          <Cardgroup />
+          <div>
+            <Cardgroup
+              className={`aspect-[5/7] bg-blue-400 rounded-3xl [&>*:nth-child(1)]:bg-green-600`}
+              littleClassName="aspect-[5/7] w-[12vmin] bg-neutral-600 rounded-3xl"
+              card1="bg-red-100"
+              card2="bg-red-300"
+              card3="bg-red-500"
+              card4="bg-red-700"
+              littleCard1="bg-red-100"
+              littleCard2="bg-red-400"
+              littleCard3="bg-red-600"
+              littleCard4="bg-red-700"
+            />
+          </div>
         </div>
         <div className={box3ClassNames}>
-          <Cardgroup />
+          <div>
+            <Cardgroup
+              className={`aspect-[5/7] bg-blue-400 rounded-3xl [&>*:nth-child(1)]:bg-green-600`}
+              littleClassName="aspect-[5/7] w-[12vmin] bg-neutral-600 rounded-3xl"
+              card1="bg-green-100"
+              card2="bg-green-400"
+              card3="bg-green-500"
+              card4="bg-green-700"
+              littleCard1="bg-green-100"
+              littleCard2="bg-green-300"
+              littleCard3="bg-green-400"
+              littleCard4="bg-green-700"
+            />
+          </div>
         </div>
       </div>
-      <div className="text-center flex items-center justify-center mt-[17rem] text-3xl mb-[8rem]">
+      <div className="text-center flex mt-[70%] text-3xl">
         <div>
           <div
             onClick={handleClickHate1}
